@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        lang="en"
+        layout:decorate="~{layout/main}">
+<body>
+<div layout:fragment="body">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-md-6 mt-3">
+                <div class="card border-dark">
+                    <div class="card-body">
+                        <table class="table table-bordered table-hover table-responsive">
+                            <thead>
+                            <th>currency - code - % change - &pound;1 buys - change</th>
+                            </thead>
+                            <tbody>
+                            <tr th:each="datum : ${data}">
+                                <td th:text="${datum}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script layout:fragment="javascript">
+    function submitForm() {
+        $.post('', $('form').serialize(), function (response) {
+            if (response === "success") {
+                alert("You have subscribed successfully!");
+            } else {
+                alert("Something went wrong!");
+            }
+        });
+    }
+</script>
+</body>
+</html>
