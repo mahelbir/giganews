@@ -15,11 +15,11 @@ import java.util.LinkedList;
 class MarketplaceController {
     @GetMapping("/marketplace")
     String marketplace(Model model) throws IOException {
-        model.addAttribute("data", fetchData());
+        model.addAttribute("data", getData());
         return "marketplace";
     }
 
-    private static LinkedList<String> fetchData() throws IOException {
+    private static LinkedList<String> getData() throws IOException {
         Document doc = Jsoup.connect("https://www.bbc.com/news/business/market-data").get();
         Elements currencies = doc.select("[aria-labelledby=nw-c-md-region--currencies] table");
         LinkedList<String> data = new LinkedList<>();

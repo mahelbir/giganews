@@ -8,14 +8,14 @@ import java.util.regex.Pattern;
 @Controller
 class SubscribeController {
     @GetMapping("/subscribe")
-    String subscribe() {
+    public String subscribe() {
         return "subscribe";
     }
 
     @PostMapping("/subscribe")
     @ResponseBody
-    String subscribe(@RequestParam String email) {
-        if (validEmail(email)) {
+    public String subscribeEmail(@RequestParam String email) {
+        if (isValidEmail(email)) {
             System.out.println("User subscribed: " + email);
             return "success";
         } else {
@@ -23,7 +23,7 @@ class SubscribeController {
         }
     }
 
-    private static boolean validEmail(String email) {
+    private static boolean isValidEmail(String email) {
         return Pattern.compile("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
                 .matcher(email)
                 .matches();
