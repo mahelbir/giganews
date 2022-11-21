@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head">
+    <title id="title">GigaNews - [[${result.get('title')}]]</title>
+</head>
+<body>
+<nav th:replace="layout :: navbar"></nav>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8">
+            <article>
+                <header class="mb-4">
+                    <h1 class="fw-bolder mb-1" th:text="${result.get('title')}"></h1>
+                    <div class="text-muted fst-italic mb-2" th:text="${result.get('time')}"></div>
+                    <p class="badge bg-secondary" style="word-break: break-word" th:text="${result.get('topic')}"></p>
+                </header>
+                <figure class="mb-4"><img class="img-fluid rounded" th:src="${result.get('img')}" alt="post-image"/>
+                </figure>
+                <section class="mb-5" th:utext="${result.get('body')}"></section>
+            </article>
+            <section class="mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3"><img class="rounded-circle"
+                                                       th:src="@{/assets/img/emoji/like.webp}"
+                                                       alt="like" title="I like it!"/></div>
+                            <div class="col-3"><img class="rounded-circle"
+                                                       th:src="@{/assets/img/emoji/dislike.webp}" alt="dislike"
+                                                       title="I hate that!"/>
+                            </div>
+                            <div class="col-3"><img class="rounded-circle"
+                                                       th:src="@{/assets/img/emoji/angry.gif}"
+                                                       alt="angry" title="I feel angry!"/></div>
+                            <div class="col-3"><img class="rounded-circle" th:src="@{/assets/img/emoji/sad.gif}"
+                                                       alt="sad" title="I feel so sad!"/></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div th:replace="layout :: sidebar"></div>
+    </div>
+</div>
+<footer th:replace="layout :: javascript"></footer>
+<script th:inline="javascript">
+    $('.rounded-circle').on('click', function () {
+        const emoji = $(this).prop('alt');
+        $.post(/*[[@{/react/}]]*/'', {'emoji': emoji, id: /*[[${id}]]*/''}, function (response) {
+            if (response === "success") {
+                $('.rounded-circle').hide();
+                $('img[alt=' + emoji + ']').show();
+            } else {
+                alert("Something went wrong!");
+            }
+        });
+    });
+</script>
+</body>
+</html>

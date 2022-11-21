@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="layout :: head"></head>
+<head th:replace="layout :: head">
+    <title id="title">GigaNews</title>
+</head>
 <body>
 <nav th:replace="layout :: navbar"></nav>
-<header class="py-5 bg-light border-bottom mt-4" th:if="${isIndex}">
+<header class="py-5 bg-light border-bottom mt-4">
     <div class="container">
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome to GigaNews!</h1>
@@ -15,63 +17,36 @@
     <div class="row">
         <div class="col-lg-8">
             <div class="row mb-4">
-                <div class="col-lg-12" th:if="${isIndex}">
+                <div class="col-lg-12" th:if="${primaryItem}">
                     <div class="card mt-4">
-                        <a href="#!"><img class="card-img-top" th:src="${primaryItem.get('img')}"/></a>
+                        <a th:href="@{'/read?id=' + ${primaryItem.get('url')}}"><img class="card-img-top"
+                                                                                     th:src="${primaryItem.get('img')}"
+                                                                                     alt="primary-post"/></a>
                         <div class="card-body">
                             <div class="small text-muted" th:text="${primaryItem.get('time')}"></div>
                             <h2 class="card-title" th:text="${primaryItem.get('title')}"></h2>
                             <p class="card-text" th:text="${primaryItem.get('text')}"></p>
-                            <a class="btn btn-primary" th:href="${primaryItem.get('url')}">Read more →</a>
+                            <a class="btn btn-primary" th:href="@{'/read?id=' + ${primaryItem.get('url')}}">Read more
+                                →</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6" th:each="datum : ${data}">
+                <div class="col-lg-6" th:each="item : ${news}">
                     <div class="card mt-4">
-                        <a href="#!"><img class="card-img-top" th:src="${datum.get('img')}"/></a>
+                        <a th:href="@{'/read?id=' + ${item.get('url')}}"><img class="card-img-top"
+                                                                              th:src="${item.get('img')}"
+                                                                              alt="post"/></a>
                         <div class="card-body">
-                            <div class="small text-muted" th:text="${datum.get('time')}"></div>
-                            <h2 class="card-title h4" th:text="${datum.get('title')}"></h2>
-                            <p class="card-text" th:text="${datum.get('text')}"></p>
-                            <a class="btn btn-primary" th:href="${datum.get('url')}">Read more →</a>
+                            <div class="small text-muted" th:text="${item.get('time')}"></div>
+                            <h2 class="card-title h4" th:text="${item.get('title')}"></h2>
+                            <p class="card-text" th:text="${item.get('text')}"></p>
+                            <a class="btn btn-primary" th:href="@{'/read?id=' + ${item.get('url')}}">Read more →</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card mt-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a th:href="@{/category/uk}">Local (UK)</a></li>
-                                <li><a th:href="@{/category/science_and_environment}">Science</a></li>
-                                <li><a th:href="@{/category/health}">Health</a></li>
-                                <li><a th:href="@{/category/entertainment_and_arts}">Entertainment</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a th:href="@{/category/world}">World</a></li>
-                                <li><a th:href="@{/category/technology}">Technology</a></li>
-                                <li><a th:href="@{/category/stories}">Stories</a></li>
-                                <li><a th:href="@{/category/business}">Business</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card mt-4">
-                <div class="card-header">Follow us!</div>
-                <div class="card-body">
-                    <a href="https://www.eskisehir.edu.tr/" target="_blank">Website</a>
-                    <a href="https://www.instagram.com/eskisehirteknikuniv/" target="_blank">Instagram</a>
-                    <a href="https://twitter.com/esteknikuniv" target="_blank">Twitter</a>
-                </div>
-            </div>
-        </div>
+        <div th:replace="layout :: sidebar"></div>
     </div>
 </div>
 

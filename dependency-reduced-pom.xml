@@ -11,7 +11,7 @@
   <artifactId>giganews</artifactId>
   <name>GigaNews</name>
   <version>1.0</version>
-  <description>Multifunctional news project</description>
+  <description>Multifunctional news page project</description>
   <build>
     <plugins>
       <plugin>

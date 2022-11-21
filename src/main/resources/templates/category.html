@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head">
+    <title id="title">GigaNews - Category</title>
+</head>
+<body>
+<nav th:replace="layout :: navbar"></nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row mb-4">
+                <div class="col-lg-6" th:each="item : ${news}">
+                    <div class="card mt-4">
+                        <a th:href="@{'/read?id=' + ${item.get('url')}}"><img class="card-img-top" th:src="${item.get('img')}" alt="post" /></a>
+                        <div class="card-body">
+                            <div class="small text-muted" th:text="${item.get('time')}"></div>
+                            <h2 class="card-title h4" th:text="${item.get('title')}"></h2>
+                            <p class="card-text" th:text="${item.get('text')}"></p>
+                            <a class="btn btn-primary" th:href="@{'/read?id=' + ${item.get('url')}}">Read more →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="layout :: sidebar"></div>
+    </div>
+</div>
+
+<footer th:replace="layout :: javascript"></footer>
+</body>
+</html>

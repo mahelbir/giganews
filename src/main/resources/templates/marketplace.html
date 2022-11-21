@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="layout :: head"></head>
+<head th:replace="layout :: head">
+    <title id="title">GigaNews - Marketplace</title>
+</head>
 <body>
 <nav th:replace="layout :: navbar"></nav>
 <div class="container">
@@ -11,11 +13,12 @@
                 <div class="card-body">
                     <table class="table table-bordered table-hover table-responsive">
                         <thead>
-                        <th>currency - code - % change - &pound;1 buys - change</th>
+                        <tr>
+                            <th>currency - code - % change - &pound;1 buys - change</th></tr>
                         </thead>
                         <tbody>
-                        <tr th:each="datum : ${data}">
-                            <td th:text="${datum}"></td>
+                        <tr th:each="item : ${result}">
+                            <td th:text="${item}"></td>
                         </tr>
                         </tbody>
                     </table>
