@@ -33,7 +33,7 @@ public class Crawler {
                     allNewsList.add(newsMeta);
             }
         } catch (IOException e) {
-            System.out.println("Error: Crawler.fetchAllNews()");
+            System.out.println("Error: Crawler.scanAllNews()");
         }
         return allNewsList;
     }
@@ -82,7 +82,7 @@ public class Crawler {
                 body.add("<p class=\"fs-5 mb-4\">" + text.text() + "</p>");
             result.put("body", String.join("", body));
         } catch (IOException e) {
-            System.out.println("Error: Crawler.fetchMarketplace()");
+            System.out.println("Error: Crawler.fetchNews()");
         }
         return result;
     }
@@ -98,7 +98,7 @@ public class Crawler {
                     data.add(tr.text());
             }
         } catch (IOException e) {
-            System.out.println("Error: Crawler.fetchMarketplace()");
+            System.out.println("Error: Crawler.scanMarketplace()");
         }
         return data;
     }

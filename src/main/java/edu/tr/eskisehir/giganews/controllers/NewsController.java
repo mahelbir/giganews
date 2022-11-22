@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 class NewsController {
     @GetMapping("/read")
     String readNews(@RequestParam String id, Model model) {
+        System.out.println("User is reading: " + id);
         model.addAttribute("id", id);
         model.addAttribute("result", Crawler.fetchNews(id));
         return "news";
@@ -26,6 +27,7 @@ class NewsController {
             System.out.println("User reacted with '" + emoji + "' to '" + id + "'");
             return "success";
         } else {
+            System.out.println("Reaction error");
             return "error";
         }
     }

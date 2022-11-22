@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 class MarketplaceController {
     @GetMapping("/marketplace")
     String marketplace(Model model) {
+        System.out.println("User is checking marketplace");
         model.addAttribute("result", Crawler.scanMarketplace());
         return "marketplace";
     }

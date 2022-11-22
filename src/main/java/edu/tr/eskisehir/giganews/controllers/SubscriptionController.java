@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 class SubscriptionController {
     @GetMapping("/subscription")
     public String subscribe() {
+        System.out.println("User is subscribing");
         return "subscription";
     }
 
@@ -20,12 +21,14 @@ class SubscriptionController {
     @ResponseBody
     public String subscribeResponse(@RequestParam String email, @RequestParam String category) {
         if (isValidEmail(email)) { // check email
+            System.out.println("Email is valid: " + email);
             if (!category.isEmpty())
                 System.out.println("User subscribed to '" + category + "' category feed: " + email);
             else
                 System.out.println("User subscribed to all news feed : " + email);
             return "success";
         } else {
+            System.out.println("Email is not valid: " + email);
             return "error";
         }
     }

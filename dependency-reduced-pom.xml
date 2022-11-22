@@ -13,6 +13,7 @@
   <version>1.0</version>
   <description>Multifunctional news page project</description>
   <build>
+    <finalName>bim209hw</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -93,6 +94,12 @@
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
       <version>1.15.3</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>open</artifactId>
+      <version>8.4.0.3</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
