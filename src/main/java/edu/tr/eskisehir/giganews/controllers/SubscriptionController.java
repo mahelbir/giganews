@@ -19,7 +19,7 @@ class SubscriptionController {
 
     @PostMapping("/subscription")
     @ResponseBody
-    public String subscribeResponse(@RequestParam String email, @RequestParam String category) {
+    public String subscribe(@RequestParam String email, @RequestParam String category) {
         if (isValidEmail(email)) { // check email
             System.out.println("Email is valid: " + email);
             if (!category.isEmpty())
