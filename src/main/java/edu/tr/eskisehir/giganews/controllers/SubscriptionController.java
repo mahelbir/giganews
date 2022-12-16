@@ -25,7 +25,7 @@ class SubscriptionController {
             if (!category.isEmpty())
                 System.out.println("User subscribed to '" + category + "' category feed: " + email);
             else
-                System.out.println("User subscribed to all news feed : " + email);
+                System.out.println("User subscribed to all news feed: " + email);
             return "success";
         } else {
             System.out.println("Email is not valid: " + email);

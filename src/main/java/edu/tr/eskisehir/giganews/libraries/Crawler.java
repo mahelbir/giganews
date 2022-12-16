@@ -43,7 +43,7 @@ public class Crawler {
         Elements heading = news.select(".gs-c-promo-body .gs-c-promo-heading");
         String time = news.select("time .gs-u-vh").text();
         String link = heading.attr("href");
-        if (img.hasAttr("src") && !time.isEmpty() && link.contains("/news/")) {
+        if (img.hasAttr("src") && !time.isEmpty() && !time.contains("Video") && link.contains("/news/")) {
             Dictionary<String, String> newsMeta = new Hashtable<>();
             String[] parts;
             if (img.hasAttr("data-src")) {

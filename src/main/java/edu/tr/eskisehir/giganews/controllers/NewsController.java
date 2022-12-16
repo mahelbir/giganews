@@ -24,7 +24,7 @@ class NewsController {
     @ResponseBody
     String reactWithEmoji(@RequestParam String emoji, @RequestParam String id) {
         if (!emoji.isEmpty() && !id.isEmpty()) {
-            System.out.println("User reacted with '" + emoji + "' to '" + id + "'");
+            System.out.println("User reacted with '" + emoji + "': " + id);
             return "success";
         } else {
             System.out.println("Reaction error");

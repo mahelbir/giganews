@@ -17,7 +17,7 @@ class HomeController {
     public String listAllNews(Model model) {
         System.out.println("User listed all news");
         LinkedList<Dictionary<String, String>> allNews = Crawler.scanAllNews("");
-        if (1 <= allNews.size()) {
+        if (0 < allNews.size()) {
             if (allNews.get(0) != null)
                 model.addAttribute("primaryItem", allNews.get(0));
             allNews.remove(0);
